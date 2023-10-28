@@ -4,7 +4,7 @@
 
 let digit = document.querySelectorAll(".number");
 let equationSpan = document.getElementById("equation");
-let equation = document.getElementById("equation");
+// let equation = document.getElementById("equation");
 let equationSolved = false;
 
 digit.forEach((item, index) => {
@@ -20,10 +20,16 @@ digit.forEach((item, index) => {
     let currentValue = input.value;
     inputIndex = index + 1;
 
-    input.value = parseFloat(currentValue + inputIndex);
+    if (index < 10) {
+      input.value = parseFloat(currentValue + inputIndex);
+      //   input.value.toString();
+    } else if (index === 10) {
+      input.value = parseFloat(currentValue + 0);
+      //   input.value.toString();
+    } else {
+      input.value = currentValue + ".";
+    }
     input.value.toString();
-    console.log(input.value);
-    console.log(inputArray);
   });
 });
 
@@ -67,7 +73,7 @@ subtract.addEventListener("click", function () {
   addSubMultiDiv("-");
 });
 multiply.addEventListener("click", function () {
-  addSubMultiDiv("*");
+  addSubMultiDiv("x");
 });
 divide.addEventListener("click", function () {
   addSubMultiDiv("/");
@@ -80,27 +86,29 @@ equals.addEventListener("click", function () {
 // document.body.append(equation);
 
 function calculate() {
-  let results = parseFloat(inputArray[0]);
-  let index = 0;
-
-  while (index < inputArray.length) {
+  for (let index = 0; index < inputArray.length; index++) {
     const element = inputArray[index];
     let leftValue = parseFloat(inputArray[index - 1]);
     let rightValue = parseFloat(inputArray[index + 1]);
     let result = 0;
+    if (element === "x" || element === "/") {
+      if (element === "x") {
+        result = leftValue * rightValue;
 
-    if (element === "*") {
-      result = leftValue * rightValue;
+        //   return;
+      } else if (element === "/") {
+        result = leftValue / rightValue;
+
+        //   return;
+      }
+      console.log("beforeSplice", inputArray);
       inputArray.splice(index - 1, 3, result);
-      index -= 2;
-    } else if (element === "/") {
-      result = leftValue / rightValue;
-      inputArray.splice(index - 1, 3, result);
-      index -= 2;
-    } else {
-      index++;
+      console.log("afterSplice", inputArray);
+
+      index--;
     }
   }
+  let results = parseFloat(inputArray[0]);
 
   for (let index = 2; index < inputArray.length; index += 2) {
     let value = parseFloat(inputArray[index]);
@@ -113,15 +121,15 @@ function calculate() {
       case "-":
         results -= value;
         break;
-        //   case "*":
-        //     results *= value;
-        //     break;
-        //   case "/":
-        //     results /= value;
-        //     break;
-        //   case "=":
-        //     results = value; // Kanske vill du bara sätta results till value istället?
-        break;
+      //   case "*":
+      //     results *= value;
+      //     break;
+      //   case "/":
+      //     results /= value;
+      //     break;
+      //   case "=":
+      //     results = value; // Kanske vill du bara sätta results till value istället?
+      // break;
       default:
         break;
     }
@@ -138,7 +146,7 @@ function addSubMultiDiv(operator) {
     inputArray = [];
     inputArray.push(input.value, operator);
     equationSolved = false;
-    console.log(inputArray);
+    // console.log(inputArray);
   } else {
     //   if (inputArray.length === 1 && !isNaN(input.value)) {
     //     inputArray = [];

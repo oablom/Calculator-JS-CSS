@@ -16,6 +16,7 @@ button {
   cursor: pointer;
   border-radius: 5px;
   border-style: none;
+  font-size: 20px;
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   transition: filter 0.2s;
 }
@@ -43,7 +44,7 @@ button:hover {
   border-radius: 2px 2px 5px 5px;
   display: grid;
   grid-template: repeat(10, 25px)/repeat(18, 25px);
-  height: 287px;
+  height: 347px;
   width: 490px;
   background: #e5eedd;
   padding: 20px;
@@ -52,10 +53,18 @@ button:hover {
 
 .numbers-container {
   width: 360px;
+  height: 200px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   grid-area: 4/1/11/4;
+}
+.numbers-container :nth-child(10) {
+  visibility: hidden;
+}
+.numbers-container :nth-child(12) {
+  font-weight: bold;
+  font-size: 26px;
 }
 
 #clear-input,
@@ -64,11 +73,13 @@ button:hover {
   grid-row: 1/3;
   width: 62.5px;
   grid-column: 1/3;
+  font-size: 16px;
 }
 
 #remove-digit {
   width: 37.5px;
   grid-column: 4;
+  font-size: 26px;
 }
 
 #input,
@@ -145,11 +156,13 @@ input[type=number] {
   grid-column: 15/19;
   grid-row: 4/9;
   transform: translateX(-10px);
+  font-size: 26px;
 }
 
 #subtract {
   grid-column: 19/17;
   grid-row: 4/9;
+  font-size: 26px;
 }
 
 #multiply {
@@ -162,6 +175,7 @@ input[type=number] {
   grid-column: 19/17;
   grid-row: 6/9;
   transform: translateY(12px);
+  font-size: 26px;
 }
 
 #equals {
