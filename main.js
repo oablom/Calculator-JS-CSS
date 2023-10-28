@@ -155,7 +155,7 @@ function addSubMultiDiv(operator) {
     if (input.value.length > 0) {
       inputArray.push(input.value);
     }
-    if (operator === "=") {
+    if (operator === "=" || inputArray.length >= 7) {
       let result = calculate();
       console.log("Calculated Result:", result);
       equationSpan.textContent = result;
