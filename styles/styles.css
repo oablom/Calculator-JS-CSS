@@ -1,0 +1,173 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: "Orbitron", sans-serif;
+}
+
+main {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 5px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  transition: filter 0.2s;
+}
+button:hover {
+  filter: brightness(0.8); /* Gör bakgrundsfärgen 20% mörkare */
+}
+
+.outer-container {
+  position: relative;
+  margin-top: 20px;
+  border-radius: 5px;
+  background: #e5eedd;
+  height: 315px;
+  width: 490px;
+  display: flex;
+  justify-content: center;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+.outer-container h1 {
+  position: absolute;
+}
+
+.calc-container {
+  margin-top: 40px;
+  border-radius: 2px 2px 5px 5px;
+  display: grid;
+  grid-template: repeat(10, 25px)/repeat(18, 25px);
+  height: 287px;
+  width: 490px;
+  background: #e5eedd;
+  padding: 20px;
+  box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 4px 0px inset;
+}
+
+.numbers-container {
+  width: 360px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  grid-area: 4/1/11/4;
+}
+
+#clear-input,
+#remove-digit {
+  border-radius: 5px;
+  grid-row: 1/3;
+  width: 62.5px;
+  grid-column: 1/3;
+}
+
+#remove-digit {
+  width: 37.5px;
+  grid-column: 4;
+}
+
+#input,
+.input-container {
+  position: relative;
+  text-align: right;
+  padding: 20px;
+  grid-row-start: 1;
+  grid-column: 6;
+  height: 50px;
+  width: 320px;
+  border-radius: 5px;
+  border-style: none;
+  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+}
+#input::-moz-placeholder, .input-container::-moz-placeholder {
+  text-align: right;
+}
+#input::placeholder,
+.input-container::placeholder {
+  text-align: right;
+}
+
+#input {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+#equation {
+  position: absolute;
+  top: 16px;
+  left: 10px;
+  z-index: 2;
+  color: grey;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+  appearance: none;
+}
+
+.number {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 50px;
+  border-radius: 5px;
+  background-color: rgb(191, 216, 189);
+  cursor: pointer;
+}
+
+.number:nth-child(odd) {
+  background-color: rgb(152, 201, 163);
+}
+
+.math {
+  grid-column: 15/19;
+  grid-row: 4/9;
+  border-radius: 5px;
+  width: 50px;
+  height: 50px;
+}
+
+#add {
+  grid-column: 15/19;
+  grid-row: 4/9;
+  transform: translateX(-10px);
+}
+
+#subtract {
+  grid-column: 19/17;
+  grid-row: 4/9;
+}
+
+#multiply {
+  grid-column: 15/19;
+  grid-row: 6/9;
+  transform: translate(-10px, 12px);
+}
+
+#divide {
+  grid-column: 19/17;
+  grid-row: 6/9;
+  transform: translateY(12px);
+}
+
+#equals {
+  grid-column: 19/15;
+  grid-row: 9/11;
+  margin-bottom: 2px;
+  width: 110px;
+  transform: translateX(-10px);
+}/*# sourceMappingURL=styles.css.map */
