@@ -33,7 +33,7 @@ button:hover {
   width: 490px;
   display: flex;
   justify-content: center;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 70px 80px 0px;
 }
 .outer-container h1 {
   position: absolute;
@@ -184,4 +184,33 @@ input[type=number] {
   margin-bottom: 2px;
   width: 110px;
   transform: translateX(-10px);
+}
+
+@media screen and (max-width: 500px) {
+  * {
+    transform: scale(0.95);
+  }
+  .calc-container {
+    transform: scale(1);
+  }
+  .outer-container {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 70px 80px 0px;
+  }
+  #input {
+    transform: scale(1);
+  }
+}
+@media screen and (max-width: 400px) {
+  * {
+    transform: scale(0.9);
+  }
+  .calc-container {
+    transform: scale(1);
+  }
+  .outer-container {
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 70px 80px 0px;
+  }
+  #input {
+    transform: scale(1);
+  }
 }/*# sourceMappingURL=styles.css.map */
