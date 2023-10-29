@@ -14,17 +14,24 @@ digit.forEach((item, index) => {
   item.addEventListener("click", () => {
     let input = document.getElementById("input");
 
-    if (input.value === "") {
-      input.value = 0;
-    }
+    // if (input.value === "") {
+    //   input.value = 0;
+    // }
     let currentValue = input.value;
     inputIndex = index + 1;
-
+    // if (currentValue === "-") {
+    //   input.value = currentValue + inputIndex;
+    // } else
     if (index < 10) {
       input.value = parseFloat(currentValue + inputIndex);
       //   input.value.toString();
     } else if (index === 10) {
-      input.value = parseFloat(currentValue + 0);
+      if (input.value.includes(".")) {
+        input.value = currentValue + 0;
+      } else {
+        input.value = parseFloat(currentValue + 0);
+      }
+
       //   input.value.toString();
     } else {
       input.value = currentValue + ".";
@@ -140,6 +147,14 @@ function calculate() {
 function addSubMultiDiv(operator) {
   let input = document.getElementById("input");
 
+  if (operator === "-" && input.value === "") {
+    input.value = -input.value;
+  }
+
+  if (input.value.includes(".")) {
+    input.value = parseFloat(input.value);
+  }
+
   // om jag trycker på operator och arrayen har två int i rad, ta borta arrayIndex0
   //   if ()
   if (equationSolved && input.value !== "") {
@@ -152,23 +167,27 @@ function addSubMultiDiv(operator) {
     //     inputArray = [];
     //     equationSpan.textContent = inputArray.join(" ");
     //   }
+    // if (input.value.length === 0) {}
     if (input.value.length > 0) {
       inputArray.push(input.value);
     }
     if (operator === "=" || inputArray.length >= 7) {
       let result = calculate();
-      console.log("Calculated Result:", result);
-      equationSpan.textContent = parseFloat(result.toFixed(5));
+      if (!isNaN(result)) {
+        console.log("Calculated Result:", result);
+        equationSpan.textContent = parseFloat(result.toFixed(5));
 
-      console.log(inputArray);
-      inputArray = [result.toString()]; // Spara resultatet som en sträng i inputArray för att fortsätta med andra beräkningar om så önskas.
-      console.log(inputArray);
-      input.value = "";
-      equationSolved = true;
-      return;
+        console.log(inputArray);
+        inputArray = [result.toString()]; // Spara resultatet som en sträng i inputArray för att fortsätta med andra beräkningar om så önskas.
+        console.log(inputArray);
+        input.value = "";
+        equationSolved = true;
+        return;
+      }
     } else {
       equationSolved = false;
       //   if ( operator !== "=") {
+
       if (
         isNaN(inputArray[inputArray.length - 1]) &&
         inputArray[inputArray.length - 1] !== "="
