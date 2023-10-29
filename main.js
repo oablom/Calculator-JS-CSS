@@ -179,6 +179,15 @@ function addSubMultiDiv(operator) {
       }
     }
   }
+
+  inputArray = inputArray.map((item) => {
+    if (!isNaN(item) && item.includes(".")) {
+      item = parseFloat(item).toFixed(5);
+      item = item.toString();
+    }
+    return item;
+  });
+
   equationSpan.textContent = inputArray.join(" ");
   // equationSpan.textContent = parseFloat(inputArray.join(" ").toFixed(5));
 
