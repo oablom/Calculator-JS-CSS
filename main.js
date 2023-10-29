@@ -158,7 +158,7 @@ function addSubMultiDiv(operator) {
     if (operator === "=" || inputArray.length >= 7) {
       let result = calculate();
       console.log("Calculated Result:", result);
-      equationSpan.textContent = result;
+      equationSpan.textContent = parseFloat(result.toFixed(5));
 
       console.log(inputArray);
       inputArray = [result.toString()]; // Spara resultatet som en sträng i inputArray för att fortsätta med andra beräkningar om så önskas.
@@ -180,6 +180,8 @@ function addSubMultiDiv(operator) {
     }
   }
   equationSpan.textContent = inputArray.join(" ");
+  // equationSpan.textContent = parseFloat(inputArray.join(" ").toFixed(5));
+
   input.value = "";
 }
 // }
