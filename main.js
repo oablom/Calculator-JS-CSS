@@ -93,6 +93,11 @@ equals.addEventListener("click", function () {
 // document.body.append(equation);
 
 function calculate() {
+  console.log("arraylength", inputArray.length);
+  // let y = 0;
+  // if (isNaN(inputArray[0])) {
+  //   y = 1;
+  // }
   for (let index = 0; index < inputArray.length; index++) {
     const element = inputArray[index];
     let leftValue = parseFloat(inputArray[index - 1]);
@@ -115,7 +120,18 @@ function calculate() {
       index--;
     }
   }
-  let results = parseFloat(inputArray[0]);
+  let tempArray = [...inputArray];
+  if (inputArray[0] === "") {
+    tempArray.shift();
+    tempArray.unshift(0);
+  }
+
+  console.log("zeroIndex", inputArray[0]);
+
+  let results = parseFloat(tempArray[0]);
+  // if (inputArray[0] === "") {
+  //   results = 0;
+  // }
 
   for (let index = 2; index < inputArray.length; index += 2) {
     let value = parseFloat(inputArray[index]);
@@ -141,13 +157,14 @@ function calculate() {
         break;
     }
   }
+  console.log("endofCalc", inputArray);
   return results;
 }
 
 function addSubMultiDiv(operator) {
   let input = document.getElementById("input");
 
-  if (operator === "-" && input.value === "") {
+  if (operator === "-" && input.value === "" && inputArray.length < 2) {
     input.value = -input.value;
   }
 
@@ -210,6 +227,19 @@ function addSubMultiDiv(operator) {
     return item;
   });
 
+  // if (inputArray[0] === "0" || inputArray[0] === 0) {
+  //   input.value = toString(-input.value);
+  //   firstValue = inputArray[0];
+  //   inputArray.shift();
+  //   // inputArray.shift();
+  // }
+  // inputArray[0] = firstValue;
+  // inputArray = [];
+  if (inputArray.length < 3 && inputArray[0] === "0") {
+    inputArray.shift();
+    inputArray.unshift("");
+    console.log(inputArray);
+  }
   equationSpan.textContent = inputArray.join(" ");
   // equationSpan.textContent = parseFloat(inputArray.join(" ").toFixed(5));
 
