@@ -1,6 +1,28 @@
 // Skapa en simpel kalkylator. Det ska finnas två input fält som tar in varsitt nummer, och när användaren fyllt i bägge och klickar på en knapp ska dessa två värdena adderas med varandra (+).
 // Skapa ytterligare en knapp för att multiplicera dessa tal med varandra
 // Skapa en knapp för att subtrahera dessa tal med varandra (tal1 - tal2). Om resultatet blir mindre än 0, skriv ut ett snällt felmeddelande i webbläsaren, där det står tydligt vad användaren gjort fel och behöver rätta till för att få det att fungera.
+let audioClick;
+let audioEnter;
+let audioClear;
+
+window.onload = function () {
+  audioClick = new Audio("sounds/click.wav");
+  audioEnter = new Audio("sounds/enter.wav");
+  audioClear = new Audio("sounds/clear.wav");
+  // audio = new Audio(
+  //   "https://s3-us-west-2.amazonaws.com/s.cdpn.io/242518/click.mp3"
+  // );
+  audioClick.preload = "auto";
+  audioEnter.preload = "auto";
+  audioClear.preload = "auto";
+  // clickSound();
+};
+
+function clickSound(audio) {
+  if (audio) {
+    audio.play();
+  }
+}
 
 let digit = document.querySelectorAll(".number");
 let equationSpan = document.getElementById("equation");
@@ -13,6 +35,7 @@ digit.forEach((item, index) => {
 
   item.addEventListener("click", () => {
     let input = document.getElementById("input");
+    clickSound(audioClick);
 
     // if (input.value === "") {
     //   input.value = 0;
@@ -43,6 +66,7 @@ digit.forEach((item, index) => {
 let clearInput = document.querySelector("#clear-input");
 
 clearInput.addEventListener("click", () => {
+  clickSound(audioClear);
   input.value = "";
   inputArray = [];
   equation.innerHTML = "";
@@ -52,8 +76,11 @@ clearInput.addEventListener("click", () => {
 });
 
 let removeDigit = document.getElementById("remove-digit");
+clickSound(audioClick);
 
 removeDigit.addEventListener("click", () => {
+  clickSound(audioClick);
+
   input.placeholder = "";
 
   if (input.value.length > 0) {
@@ -74,18 +101,28 @@ let inputArray = [];
 let inputResult = 0;
 
 add.addEventListener("click", function () {
+  clickSound(audioClick);
+
   addSubMultiDiv("+");
 });
 subtract.addEventListener("click", function () {
+  clickSound(audioClick);
+
   addSubMultiDiv("-");
 });
 multiply.addEventListener("click", function () {
+  clickSound(audioClick);
+
   addSubMultiDiv("x");
 });
 divide.addEventListener("click", function () {
+  clickSound(audioClick);
+
   addSubMultiDiv("/");
 });
 equals.addEventListener("click", function () {
+  clickSound(audioEnter);
+
   addSubMultiDiv("=");
 });
 
