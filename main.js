@@ -182,8 +182,11 @@ function addSubMultiDiv(operator) {
 
   inputArray = inputArray.map((item) => {
     if (!isNaN(item) && item.includes(".")) {
-      item = parseFloat(item).toFixed(5);
-      item = item.toString();
+      let decimalLength = item.split(".")[1].length;
+      if (decimalLength > 5) {
+        item = parseFloat(item).toFixed(5);
+        item = item.toString();
+      }
     }
     return item;
   });
