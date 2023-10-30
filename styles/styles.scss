@@ -18,7 +18,7 @@ button {
   box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
   transition: filter 0.2s;
   &:hover {
-    filter: brightness(0.8); /* Gör bakgrundsfärgen 20% mörkare */
+    filter: brightness(0.8);
   }
 }
 
