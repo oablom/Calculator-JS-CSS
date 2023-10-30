@@ -1,6 +1,3 @@
-// Skapa en simpel kalkylator. Det ska finnas två input fält som tar in varsitt nummer, och när användaren fyllt i bägge och klickar på en knapp ska dessa två värdena adderas med varandra (+).
-// Skapa ytterligare en knapp för att multiplicera dessa tal med varandra
-// Skapa en knapp för att subtrahera dessa tal med varandra (tal1 - tal2). Om resultatet blir mindre än 0, skriv ut ett snällt felmeddelande i webbläsaren, där det står tydligt vad användaren gjort fel och behöver rätta till för att få det att fungera.
 let audioClick;
 let audioEnter;
 let audioClear;
@@ -190,7 +187,7 @@ function calculate() {
       //     results /= value;
       //     break;
       //   case "=":
-      //     results = value; // Kanske vill du bara sätta results till value istället?
+      //     results = value;
       // break;
       default:
         break;
@@ -234,7 +231,7 @@ function addSubMultiDiv(operator) {
         equationSpan.textContent = parseFloat(result.toFixed(5));
 
         console.log(inputArray);
-        inputArray = [result.toString()]; // Spara resultatet som en sträng i inputArray för att fortsätta med andra beräkningar om så önskas.
+        inputArray = [result.toString()];
         console.log(inputArray);
         input.value = "";
         equationSolved = true;
