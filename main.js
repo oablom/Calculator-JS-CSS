@@ -15,11 +15,13 @@ window.onload = function () {
   audioClick.preload = "auto";
   audioEnter.preload = "auto";
   audioClear.preload = "auto";
-  // clickSound();
+  // clickSound(audioClick);
+  // clickSound(audioEnter);
+  // clickSound(audioClear);
 };
-
 function clickSound(audio) {
   if (audio) {
+    audio.currentTime = 0.11;
     audio.play();
   }
 }
