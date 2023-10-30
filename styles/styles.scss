@@ -4,10 +4,14 @@
   margin: 0;
   font-family: "Orbitron", sans-serif;
 }
+body {
+  background: linear-gradient(180deg, #a8d5e2, #d9f2e6);
+}
 main {
   height: 100vh;
   display: flex;
   justify-content: center;
+  // align-items: center;
 }
 
 button {
@@ -23,6 +27,7 @@ button {
 }
 
 .outer-container {
+  transform: translateY(90px);
   position: relative;
   margin-top: 20px;
   border-radius: 5px;

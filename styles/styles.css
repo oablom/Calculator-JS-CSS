@@ -1,9 +1,12 @@
-@charset "UTF-8";
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
   font-family: "Orbitron", sans-serif;
+}
+
+body {
+  background: linear-gradient(180deg, #a8d5e2, #d9f2e6);
 }
 
 main {
@@ -21,10 +24,11 @@ button {
   transition: filter 0.2s;
 }
 button:hover {
-  filter: brightness(0.8); /* Gör bakgrundsfärgen 20% mörkare */
+  filter: brightness(0.8);
 }
 
 .outer-container {
+  transform: translateY(90px);
   position: relative;
   margin-top: 20px;
   border-radius: 5px;
